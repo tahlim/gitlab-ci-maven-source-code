@@ -1,0 +1,26 @@
+stages:
+  - build
+  - build-docker-image
+  - push-image-to-docker-hub
+
+build-java-project:
+  stage: build
+  script:
+    mvn package
+  artifacts:
+    paths:
+      - /home/gitlab-runner/
+
+build-docker-image:
+  stage: build-docker-image
+  script:
+    - docker info
+    - docker build -t tahlim85/java-maven .
+
+Push Docker Image to DockerHub:
+  stage: push-image-to-docker-hub
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+  script:
+    - docker info
+    - docker push tahlim85/java-maven:latest
