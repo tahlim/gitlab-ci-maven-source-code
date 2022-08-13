@@ -29,17 +29,18 @@ deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ focal main
 deb-src https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ focal main
 EOF
 ```
-sudo apt update
 ```
+sudo apt update
 curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+```
 ```
 sudo apt update
 sudo apt install gitlab-ce
 sudo vim /etc/gitlab/gitlab.rb
-    external_url 'http://gitlab.example.com'
+     external_url 'http://gitlab.example.com'
 sudo gitlab-ctl reconfigure       
 ```
-### Step : Access GitLab CE Web Interface
+### Step4 : Access GitLab CE Web Interface
 URL http://gitlab.example.com
 
 - cat /etc/gitlab/initial_root_password
